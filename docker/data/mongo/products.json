@@ -1,16 +1,20 @@
 [
 		{
-			_id: '1',
+			_id: 'abbfc4f9-83d5-49ac-9fa5-2909c5dc86e6',
 			productCode: 'AX329T',
 			categories: ['men'],
 			productName: 'Light Brown Men Shoe 1',
 			imageUrl: '01_men_one.jpg',
 			price: 68.39,
 			size: 43,
+			dimension: { unit: "cm", 
+						length: 10.2,
+						height: 10.4,
+						width:  5.4 },
 			color: 'lightbrown'
 		},
 		{
-			_id: '2',
+			_id: 'a6f5b12f-d1d4-4c4a-8905-587ea25cd6e0',
 			productCode: '6X3D93',
 			categories: ['men'],
 			productName: 'Brown Men Shoe 2',
@@ -20,7 +24,7 @@
 			color: 'brown'
 		},
 		{
-			_id: '3',
+			_id: '910323c7-9ecd-432d-b7dc-984685d404ba',
 			productCode: 'NX3G66',
 			categories: ['men'],
 			productName: 'Dark Brown Men Shoe 3',
@@ -30,7 +34,7 @@
 			color: 'darkbrown'
 		},
 		{
-			_id: '4',
+			_id: '22cfb573-fd38-4bd0-9666-0add43ec5cfc',
 			productCode: '37Y29D',
 			categories: ['women'],
 			productName: 'Black High Heel Women Shoe',
@@ -40,7 +44,7 @@
 			color: 'black'
 		},
 		{
-			_id: '5',
+			_id: '6d8581b3-be91-4160-93f2-9837f04be845',
 			productCode: '223JDH',
 			categories: ['women'],
 			productName: 'Black Women Shoe 2', 
@@ -50,7 +54,7 @@
 			color: 'black'
 		},
 		{
-			_id: '6',
+			_id: '7588d0e4-7ffb-44c3-8967-35aeea705a53',
 			productCode: '7DGFF1',
 			categories: ['men', 'children', 'boy'],
 			productName: 'Black Blue Boy Shoe 1',
@@ -60,7 +64,7 @@
 			color: 'blue'
 		},
 		{
-			_id: '7',
+			_id: 'f6daa522-b745-4286-966a-543844fd851f',
 			productCode: 'DJ7CY3',
 			categories: ['men',	'children', 'boy'],
 			productName: 'White Cream Boy Sport Shoe 2',
@@ -70,7 +74,7 @@
 			color: 'cream'
 		},
 		{
-			_id: '8',
+			_id: 'a678fb44-b5f8-4a39-999b-ecb9adaaddcf',
 			productCode: '3HDAA7',
 			categories: ['girl', 'children', 'women'],
 			productName: 'Girl Pinky White Shoe 1',
@@ -80,7 +84,7 @@
 			color: 'white'
 		},
 		{
-			_id: '9',
+			_id: 'eba4dce0-6f69-4d77-af08-b1854a2035ee',
 			productCode: 'JFJE7X',
 			categories: ['girl', 'children'],
 			productName: 'Girl Pinky Black Shoe 2',

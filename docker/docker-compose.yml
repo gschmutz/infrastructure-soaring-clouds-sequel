@@ -160,24 +160,25 @@ services:
     ports:
       - 9042:9042
 
+  # MongoDB instance for Product MS
   mongo-prod:
-    image: debezium/example-mongodb:0.7
-    container_name: mongo
+    image: mongo:latest
+    container_name: mongo-prod
     ports:
       - 27017:27017
-    environment:
-      - MONGODB_USER=debezium
-      - MONGODB_PASSWORD=dbz
+    #environment:
+    #  - MONGODB_USER=debezium
+    #  - MONGODB_PASSWORD=dbz
 
   mongo-seed:
     image: fvilers/mongo-seed:1.0.0
     environment:
-      - MONGO_HOST=mongo
+      - MONGO_HOST=mongo-prod
       - MONGO_PORT=27017
     volumes:
       - ./data/mongo:/data
     command:
-      "mongoimport --host mongo --port 27017 --db test --mode upsert --type json --file /data/product.json --jsonArray"
+      "mongoimport --host mongo-prod --port 27017 --db products --mode upsert --type json --file /data/products.json --jsonArray"
 
   elasticsearch:
     image: elastic/elasticsearch:6.1.3

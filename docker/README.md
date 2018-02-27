@@ -7,6 +7,11 @@ In order for the Elasticsearch docker container to start successfully, the follo
 sudo sysctl -w vm.max_map_count=262144
 ```
 
+Set the environment variable DOCKER_HOST_IP to the IP address of your docker host:
+```bash
+EXPORT DOCKER_HOST_IP=<IP address of your Docker Host>
+```
+
 Start the complete environment in the background (-d switch)
 ```bash
 docker-compose up -d

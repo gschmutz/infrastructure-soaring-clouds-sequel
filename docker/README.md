@@ -32,7 +32,7 @@ of for a specific service
 docker-compose logs connect
 ```
 
-The following web application are available
+The following web application are available, asuming that docker is running on localhost....
 
 * Confluent Control Center: [http://localhost:9021](http://localhost:9021)
 * Schema Registry UI: [http://localhost:8002](http://localhost:8002)

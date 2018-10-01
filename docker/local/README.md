@@ -7,11 +7,6 @@ In order for the Elasticsearch docker container to start successfully, the follo
 sudo sysctl -w vm.max_map_count=262144
 ```
 
-Set the environment variable DOCKER_HOST_IP to the IP address of your docker host:
-```bash
-EXPORT DOCKER_HOST_IP=<IP address of your Docker Host>
-```
-
 Start the complete environment in the background (-d switch)
 ```bash
 docker-compose up -d
@@ -32,7 +27,7 @@ of for a specific service
 docker-compose logs connect
 ```
 
-The following web application are available, asuming that docker is running on localhost....
+The following web application are available
 
 * Confluent Control Center: [http://localhost:9021](http://localhost:9021)
 * Schema Registry UI: [http://localhost:8002](http://localhost:8002)

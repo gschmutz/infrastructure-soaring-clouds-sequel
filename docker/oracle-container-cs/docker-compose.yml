@@ -18,23 +18,20 @@ services:
     environment:
       - KAFKA_BROKER_ID=1
       - KAFKA_BROKER_RACK=rack-a
-      - 'KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181'
-      - KAFKA_ADVERTISED_HOST_NAME=129.156.113.127
-      - 'KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://broker-1:9092'
-      - >-
-        KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS='PLAINTEXT://129.156.113.125:9092'
+      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
       - KAFKA_DELETE_TOPIC_ENABLE=true
       - KAFKA_JMX_PORT=9999
-      - >-
-        KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote
+      - KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote
         -Dcom.sun.management.jmxremote.authenticate=false
         -Dcom.sun.management.jmxremote.ssl=false
         -Dcom.sun.management.jmxremote.local.only=false
         -Dcom.sun.management.jmxremote.rmi.port=9999
       - KAFKA_JMX_HOSTNAME=broker-1
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-      - 'CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS=broker-1:9092'
-      - 'CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT=zookeeper:2181'
+      - CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS=broker-1:9092
+      - CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT=zookeeper:2181
       - CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS=1
       - CONFLUENT_METRICS_ENABLE=true
       - CONFLUENT_SUPPORT_CUSTOMER_ID=anonymous
@@ -85,5 +82,4 @@ services:
     ports:
       - '8002:8000/tcp'
     environment:
-      - 'SCHEMAREGISTRY_URL=http://129.156.113.127:8081'
-
+      - 'SCHEMAREGISTRY_URL=http://129.156.113.125:8081'

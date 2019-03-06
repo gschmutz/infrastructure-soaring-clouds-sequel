@@ -52,23 +52,6 @@ services:
       - 'SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper:2181'
       - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_ORIGIN=*
       - 'SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS=GET,POST,PUT,OPTIONS'
-  mongo-prod:
-    image: 'mongo:latest'
-    container_name: mongo-prod
-    ports:
-      - '27017:27017/tcp'
-  mongo-seed:
-    image: 'fvilers/mongo-seed:1.0.0'
-    environment:
-      - MONGO_HOST=mongo-prod
-      - MONGO_PORT=27017
-    volumes:
-      - './data/mongo:/data'
-    command: >-
-      mongoimport --host mongo-prod --port 27017 --db products --mode upsert
-      --type json --file /data/products.json --jsonArray
-    links:
-      - 'mongo-prod:mongo-prod'
   kafka-manager:
     image: trivadisbds/kafka-manager
     hostname: kafka-manager
@@ -86,4 +69,3 @@ services:
       - '8002:8000/tcp'
     environment:
       - 'SCHEMAREGISTRY_URL=http://129.156.113.127:8081'
-

@@ -9,7 +9,8 @@ services:
     environment:
       - ZOOKEEPER_CLIENT_PORT=2181
       - ZOOKEEPER_TICK_TIME=2000
-
+    restart: always
+    
   broker-1:
     image: 'confluentinc/cp-enterprise-kafka:5.1.0'
     container_name: broker-1
@@ -25,7 +26,8 @@ services:
       - KAFKA_JMX_PORT=9999
       - KAFKA_JMX_HOSTNAME=broker-1
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-
+    restart: always
+    
   broker2:
     image: 'confluentinc/cp-enterprise-kafka:5.1.0'
     container_name: broker-2
@@ -41,7 +43,8 @@ services:
       - KAFKA_JMX_PORT=9998
       - KAFKA_JMX_HOSTNAME=broker-2
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-
+    restart: always
+    
   schema-registry:
     image: 'confluentinc/cp-schema-registry:5.1.0'
     container_name: schema-registry
@@ -52,7 +55,8 @@ services:
       - 'SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=zookeeper-1:2181'
       - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_ORIGIN=*
       - 'SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS=GET,POST,PUT,OPTIONS'
-
+    restart: always
+    
   kafka-manager:
     image: trivadisbds/kafka-manager
     container_name: kafka-manager
@@ -63,7 +67,8 @@ services:
     environment:
       - ZK_HOSTS=zookeeper-1:2181
       - APPLICATION_SECRET=letmein
-      
+    restart: always
+          
   schema-registry-ui:
     image: landoop/schema-registry-ui
     container_name: schema-registry-ui
@@ -71,7 +76,8 @@ services:
       - '8002:8000/tcp'
     environment:
       - 'SCHEMAREGISTRY_URL=http://${PUBLIC_IP}:8081'
-
+    restart: always
+    
   mongo-prod:
     image: mongo:latest
     container_name: mongo-prod
@@ -80,7 +86,8 @@ services:
     #environment:
     #  - MONGODB_USER=debezium
     #  - MONGODB_PASSWORD=dbz
-
+    restart: always
+    
   product:
     image: gschmutz/product-soaring-clouds-sequel
     container_name: product
@@ -92,4 +99,4 @@ services:
       - KAFKA_TOPIC_PRODUCT=a516817-soaring-products
     ports:
       - 8080:8080
-
+    restart: always

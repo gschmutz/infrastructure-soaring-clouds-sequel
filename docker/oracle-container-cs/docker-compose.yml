@@ -21,7 +21,6 @@ services:
       - KAFKA_BROKER_RACK=rack-a
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${PUBLIC_IP}:9092
-      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
       - KAFKA_DELETE_TOPIC_ENABLE=true
       - KAFKA_JMX_PORT=9999
       - KAFKA_JMX_HOSTNAME=broker-1
@@ -38,7 +37,6 @@ services:
       - KAFKA_BROKER_RACK=rack-a
       - KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${PUBLIC_IP}:9093
-      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
       - KAFKA_DELETE_TOPIC_ENABLE=true
       - KAFKA_JMX_PORT=9998
       - KAFKA_JMX_HOSTNAME=broker-2

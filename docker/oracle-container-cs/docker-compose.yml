@@ -18,26 +18,29 @@ services:
     environment:
       - KAFKA_BROKER_ID=1
       - KAFKA_BROKER_RACK=rack-a
-      - 'KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181'
-      - KAFKA_ADVERTISED_HOST_NAME=129.156.113.127
-      - 'KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://broker-1:9092'
-      - >-
-        KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${PUBLIC_IP}:9092
+      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
       - KAFKA_DELETE_TOPIC_ENABLE=true
       - KAFKA_JMX_PORT=9999
-      - >-
-        KAFKA_JMX_OPTS=-Dcom.sun.management.jmxremote
-        -Dcom.sun.management.jmxremote.authenticate=false
-        -Dcom.sun.management.jmxremote.ssl=false
-        -Dcom.sun.management.jmxremote.local.only=false
-        -Dcom.sun.management.jmxremote.rmi.port=9999
       - KAFKA_JMX_HOSTNAME=broker-1
       - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
-      - 'CONFLUENT_METRICS_REPORTER_BOOTSTRAP_SERVERS=broker-1:9092'
-      - 'CONFLUENT_METRICS_REPORTER_ZOOKEEPER_CONNECT=zookeeper-1:2181'
-      - CONFLUENT_METRICS_REPORTER_TOPIC_REPLICAS=1
-      - CONFLUENT_METRICS_ENABLE=true
-      - CONFLUENT_SUPPORT_CUSTOMER_ID=anonymous
+
+  broker2:
+    image: 'confluentinc/cp-enterprise-kafka:5.1.0'
+    container_name: broker-2
+    ports:
+      - '9093:9093/tcp'
+    environment:
+      - KAFKA_BROKER_ID=2
+      - KAFKA_BROKER_RACK=rack-a
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper-1:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${PUBLIC_IP}:9093
+      - KAFKA_METRIC_REPORTERS=io.confluent.metrics.reporter.ConfluentMetricsReporter
+      - KAFKA_DELETE_TOPIC_ENABLE=true
+      - KAFKA_JMX_PORT=9998
+      - KAFKA_JMX_HOSTNAME=broker-2
+      - KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR=1
 
   schema-registry:
     image: 'confluentinc/cp-schema-registry:5.1.0'
@@ -58,7 +61,7 @@ services:
     ports:
       - '9000:9000/tcp'
     environment:
-      - 'ZK_HOSTS=129.156.113.127:2181'
+      - ZK_HOSTS=zookeeper-1:2181
       - APPLICATION_SECRET=letmein
       
   schema-registry-ui:

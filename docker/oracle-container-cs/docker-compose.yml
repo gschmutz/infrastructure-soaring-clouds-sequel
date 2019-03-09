@@ -90,11 +90,11 @@ services:
     image: gschmutz/product-soaring-clouds-sequel
     container_name: product
     environment:
-      - KAFKA_BOOTSTRAP-SERVERS=129.150.77.116:6667
-      - SPRING_KAFKA_SCHEMA-REGISTRY-URL=http://${DOCKER_HOST_IP}:8081
+      - KAFKA_BOOTSTRAP-SERVERS=broker-1:9092
+      - SPRING_KAFKA_SCHEMA-REGISTRY-URL=http://${PUBLIC_IP}:8081
       - SPRING_DATA_MONGODB_ADDRESS=mongo-prod
-      - KAFKA_TOPIC_ADDTOSHOPPINGCART=a516817-soaring-add-to-shopping-cart
-      - KAFKA_TOPIC_PRODUCT=a516817-soaring-products
+      - KAFKA_TOPIC_ADDTOSHOPPINGCART=soaring-add-to-shopping-cart
+      - KAFKA_TOPIC_PRODUCT=soaring-products
     ports:
       - 8080:8080
     restart: always

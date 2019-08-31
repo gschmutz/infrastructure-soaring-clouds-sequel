@@ -38,4 +38,11 @@ cd infrastructure-soaring-clouds-sequel/docker
 sudo -E docker-compose up -d
 ```
 
-into the **Launch Script** edit field
+into the **Launch Script** edit field and click on **Create Instance** to start provisioning the instance. 
+
+
+Click **Connect using SSH** to open the console and enter the following command to watch the log file of the init script.
+
+```
+tail -f /var/log/cloud-init-output.log --lines 1000
+```

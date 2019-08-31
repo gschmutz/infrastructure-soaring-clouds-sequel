@@ -180,33 +180,40 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: ignored            
 
   kafka-manager:
-    image: trivadisbds/kafka-manager
+    image: trivadis/kafka-manager
     container_name: kafka-manager
-    links:
+    hostname: kafka-manager
+    depends_on:
+      - zookeeper-1
       - broker-1
+      - broker-2
+      - broker-3
     ports:
-      - '9000:9000/tcp'
+      - '29000:9000'
     environment:
-      - ZK_HOSTS=zookeeper-1:2181
-      - APPLICATION_SECRET=letmein
+      ZK_HOSTS: 'zookeeper-1:2181'
+      APPLICATION_SECRET: letmein
     restart: always
     
   kafkahq:
     image: tchiotludo/kafkahq
     container_name: kafkahq
     ports:
-      - 28082:8080
+      - '28082:8080'
     environment:
       KAFKAHQ_CONFIGURATION: |
         kafkahq:
           connections:
             docker-kafka-server:
               properties:
-                bootstrap.servers: "broker-1:9092"
-              schema-registry: "http://schema-registry:8085"
+                bootstrap.servers: "broker-1:9092,broker-2:9093"
+              schema-registry:
+                url: "http://schema-registry:8081"
+              connect:
+                url: "http://connect-1:8083"
     depends_on:
       - broker-1
-    restart: always   
+    restart: always  
     
   schema-registry-ui:
     image: landoop/schema-registry-ui

@@ -1,7 +1,7 @@
 version: '2'
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:5.1.0
+    image: confluentinc/cp-zookeeper:5.3.0
     hostname: zookeeper
     ports:
       - "2181:2181"
@@ -10,7 +10,7 @@ services:
       ZOOKEEPER_TICK_TIME: 2000
 
   broker-1:
-    image: confluentinc/cp-enterprise-kafka:4.0.0
+    image: confluentinc/cp-enterprise-kafka:5.3.0
     hostname: broker-1
     depends_on:
       - zookeeper
@@ -36,7 +36,7 @@ services:
 
 
   broker-2:
-    image: confluentinc/cp-enterprise-kafka:4.0.0
+    image: confluentinc/cp-enterprise-kafka:5.3.0
     hostname: broker-2
     depends_on:
       - zookeeper
@@ -61,7 +61,7 @@ services:
       CONFLUENT_SUPPORT_CUSTOMER_ID: 'anonymous'
 
   kafka-topics:
-    image: confluentinc/cp-enterprise-kafka:4.0.0
+    image: confluentinc/cp-enterprise-kafka:5.3.0
     container_name: kafka-topics
     depends_on:
       - broker-1
@@ -82,7 +82,7 @@ services:
       - "7073:7073"
 
   schema_registry:
-    image: confluentinc/cp-schema-registry:4.0.0
+    image: confluentinc/cp-schema-registry:5.3.0
     hostname: schema_registry
     container_name: schema_registry
     depends_on:
@@ -98,7 +98,7 @@ services:
 #      SCHEMA_REGISTRY_JMX_PORT: 9995
 
   connect:
-    image: confluentinc/cp-kafka-connect:4.0.0
+    image: confluentinc/cp-kafka-connect:5.3.0
     hostname: connect
     container_name: connect
     depends_on:

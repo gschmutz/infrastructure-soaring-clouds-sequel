@@ -247,7 +247,7 @@ services:
     container_name: product
     environment:
       - KAFKA_BOOTSTRAP-SERVERS=broker-1:9092
-      - SPRING_KAFKA_SCHEMA-REGISTRY-URL=http://${PUBLIC_IP}:8081
+      - SPRING_KAFKA_SCHEMA-REGISTRY-URL=http://${PUBLIC_IP}:18081
       - SPRING_DATA_MONGODB_ADDRESS=mongo-prod
       - KAFKA_TOPIC_ADDTOSHOPPINGCART=soaring-add-to-shopping-cart
       - KAFKA_TOPIC_PRODUCT=soaring-products
